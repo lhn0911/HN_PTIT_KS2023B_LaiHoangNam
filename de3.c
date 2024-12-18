@@ -31,7 +31,6 @@ void push(Stack *s, int value)
         return;
     }
     s->data[++s->top] = value;
-    printf("Da them phan tu %d vao ngan xep\n", value);
 }
 
 int pop(Stack *s)
@@ -43,6 +42,7 @@ int pop(Stack *s)
     }
     int value = s->data[s->top--];
     printf("Da lay phan tu %d ra khoi ngan xep\n", value);
+
     return value;
 }
 
@@ -101,7 +101,7 @@ int main()
 {
     Stack s;
     init(&s);
-    int choice, value;
+    int choice, value, n;
 
     do
     {
@@ -122,9 +122,13 @@ int main()
         switch (choice)
         {
         case 1:
-            printf("Nhap gia tri can them: ");
-            scanf("%d", &value);
-            push(&s, value);
+            printf("Nhap so luong phan tu can them: ");
+            scanf("%d", &n);
+            for (int i = 0; i < n; i++)
+            {
+                scanf("%d", &value);
+                push(&s, value);
+            }
             break;
         case 2:
             pop(&s);
